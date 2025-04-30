@@ -13,7 +13,11 @@ app.use(express.json()); // makes requests bodies like js objects
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
+<<<<<<< HEAD
     password: '49723603671Mario',
+=======
+    password: '1234567890zari',
+>>>>>>> bb02db2bc56e2180a8d0873d67fd6ed1ab9d6d80
     database: 'studentprofileandmanagement'
 });
 
