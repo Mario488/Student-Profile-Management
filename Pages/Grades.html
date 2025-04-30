@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Css/Grades.css">
+    <title>Grades</title>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbarTitle">Student Profile</div>
+        <div>
+            <a id="home" href="Home.html">Home</a>
+            <a id="profile" href="Profile.html">Profile</a>
+            <a id="grades" href="Grades.html">Grades</a>
+            <a id="eval" href="Evaluation.html">Evaluation</a>
+            <a id="enrol" href="Enrolled.html">Enrolled Subjects</a>
+            <a id="login" href="Login.html" > Login</a>
+            <a id="logout" href="#" style="display: none;">Logout</a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <h2>Your Grades</h2>
+            <div class="semContainer">
+                <span for="sem-choice" class="sem">Semester:</span>
+                <select id="sem-choice" class="semDropdownMenuContainer">
+                    <option value="">Select</option>
+                    <option value="First Sem">First Semester</option>
+                    <option value="Second Sem">Second Semester</option>
+                    <option value="Summer">Summer</option>
+                </select>
+            </div>
+            <div class="columnContainer">
+                <span class="subjCodeCol">Subject Code</span>
+                <span class="subjDescriptionCol"> Subject Description</span>
+                <span class="subjUnitsCol">Units</span>
+                <span class="subjGradesCol">Grade</span>
+                <span class="subjInstructorCol">Instructor</span>
+            </div>
+            <div class="infoContainer">
+               
+            </div>
+        </div>
+    </div>
+    <script src="../Js/Grades.js"></script>
+</body>
+</html>

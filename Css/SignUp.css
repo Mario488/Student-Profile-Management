@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+    background: hsl(258, 79%, 71%);
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+#signupContainer{
+    width: 50%;   
+    position: relative; 
+}
+
+.signup-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: hsl(0, 0%, 100%); 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px hsla(0, 0%, 0%, 0.1);
+    width: 300px; 
+    height: 75vh;
+    overflow-y: auto;
+    scrollbar-color: hsl(258, 79%, 71%) hsl(258, 60%, 25%);
+}
+
+#coverContainer {
+    position: relative;
+    border-radius: 5px;
+    background-color: hsl(258, 60%, 25%);
+    width: 50%;
+}
+
+#coverContainer #programName{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.signup-form h2 {
+    color: #311A67; 
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid hsl(258, 60%, 25%);
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: hsl(258, 60%, 25%); /* Green button */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: hsl(258, 60%, 25%); 
+}
+
+.message {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.message a {
+    color: #311A67; 
+    text-decoration: none;
+}
+
+.message a:hover {
+    text-decoration: underline;
+}
+
