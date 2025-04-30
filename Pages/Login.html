@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../Css/Login.css">
+    <title>Student Profile Management</title>
+</head>
+<body>
+
+    <!-- Student Profile and Management - Manages different student profile with their own personal 
+     information including their subject grades and subject taken -->
+     <div class="container">
+        <div id="loginContainer" class="coverContainer">
+            <form class="login-form">
+                <h2>Login</h2>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Log in</button>
+                <p class="message">Not registered? <a href="SignUp.html" id="showRegister">Register</a></p>
+            </form>
+        </div>
+    </div>
+
+    <script src="../Js/Login.js"></script>
+</body>
+</html>
