@@ -189,10 +189,10 @@ app.get('/evaluation', (req, res) => {
         subject.SubjSemester AS semester
         FROM management
         JOIN subject ON management.SubjectID = subject.SubjID
-        WHERE management.StudentID = ? AND management.ManageStatus = 'Passed'
+        WHERE management.StudentID = ? AND subject.ProgramID = ?
     `;
     // Obtains all passed subjects
-    db.query(query, [studentId], (err, results) => {
+    db.query(query, [studentId, studentId], (err, results) => {
         if (err) {
         console.error('Database error:', err);
         return res.status(500).json({ error: 'Internal server error' });
@@ -203,8 +203,29 @@ app.get('/evaluation', (req, res) => {
 });
 
 
+app.get('/grades/enrolled-year/:studentID', (req, res) => {
+    const studentId = req.params.studentID;
+
+    // Query string to retrieve all subjects of a student based on the semester
+    const query = `
+        SELECT 
+            Year(m.ManageEnrolDate) AS year
+        FROM management m
+        JOIN student s ON m.StudentID = s.StudID
+        WHERE s.StudID = ?
+        LIMIT 1
+    `;
+    // Obtains all subjects by semester
+    db.query(query, [studentId], (err, results) => {
+        if (err) {
+            console.error('Error fetching grades:', err);
+            return res.status(500).json({ message: 'Server error' });
+        }
+        res.json(results);
+    });
+});
 // Grades route
-app.get('/grades/:semester', (req, res) => {
+app.get('/grades/by-semester/:semester', (req, res) => {
     const semester = req.params.semester;
     const studentId = req.query.studentId;
 
@@ -219,7 +240,7 @@ app.get('/grades/:semester', (req, res) => {
         FROM management m
         JOIN subject s ON m.SubjectID = s.SubjID
         LEFT JOIN instructor i ON m.InstructorID = i.InstructID
-        WHERE m.StudentID = ? AND s.SubjSemester = ?
+        WHERE m.StudentID = ? AND s.SubjSemester = ? AND m.ManageGrade IS NOT NULL
     `;
     // Obtains all subjects by semester
     db.query(query, [studentId, semester], (err, results) => {

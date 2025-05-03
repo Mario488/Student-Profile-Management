@@ -1,3 +1,19 @@
+async function getYearEnrolled(){
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    const studentID = user.StudentID;
+
+    try {
+        const res = await fetch(`http://localhost:3000/grades/enrolled-year/${encodeURIComponent(studentID)}`);
+        const data = await res.json();
+        console.log(data);
+
+        const yearEnrolled = document.getElementById('year-enrolled');
+        yearEnrolled.textContent = `Year enrolled: ${data[0].year}`; 
+    } catch (err) {
+        console.error('Failed to fetch grades:', err);
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const user = JSON.parse(localStorage.getItem('currentUser'));
     const loginLink = document.getElementById('login');
@@ -6,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (user) {
         loginLink.style.display = 'none';
         logoutLink.style.display = 'inline';
+        getYearEnrolled();
     } else {
         loginLink.style.display = 'inline';
         logoutLink.style.display = 'none';
@@ -26,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const user = JSON.parse(localStorage.getItem('currentUser'));
 
         try {
-            const res = await fetch(`http://localhost:3000/grades/${encodeURIComponent(semester)}?studentId=${user.StudentID}`);
+            const res = await fetch(`http://localhost:3000/grades/by-semester/${encodeURIComponent(semester)}?studentId=${user.StudentID}`);
             const data = await res.json();
 
             const container = document.querySelector('.infoContainer');
